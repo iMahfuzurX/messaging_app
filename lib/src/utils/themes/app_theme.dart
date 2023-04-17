@@ -7,18 +7,23 @@ class MAppTheme {
 
   static ThemeData lightTheme = ThemeData(
     textTheme: TextTheme(
-        headlineLarge: GoogleFonts.ubuntu(
-          fontWeight: FontWeight.w900,
-          color: appPrimaryDarkColor,
-        ),
-        headlineMedium: GoogleFonts.ubuntu(
-          fontWeight: FontWeight.w700,
-          color: appPrimaryDarkColor,
-        ),
-        headlineSmall: GoogleFonts.ubuntu(
-          fontWeight: FontWeight.w600,
-          color: appPrimaryDarkColor,
-        )),
+      headlineLarge: GoogleFonts.ubuntu(
+        fontWeight: FontWeight.w900,
+        color: appPrimaryDarkColor,
+      ),
+      headlineMedium: GoogleFonts.ubuntu(
+        fontWeight: FontWeight.w700,
+        color: appPrimaryDarkColor,
+      ),
+      headlineSmall: GoogleFonts.ubuntu(
+        fontWeight: FontWeight.w600,
+        color: appPrimaryDarkColor,
+      ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      focusColor: appPrimaryColor,
+      // outlineBorder:
+    )
   );
   static ThemeData darkTheme = ThemeData();
 }

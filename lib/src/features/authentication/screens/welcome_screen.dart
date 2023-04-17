@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:messaging_app/src/common_widgets/buttons/primary_button.dart';
+import 'package:messaging_app/src/common_widgets/buttons/secondary_button.dart';
 
 import '../../../../src/constants/assets.dart';
 import '../../../constants/colors.dart';
 import 'signin_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
+  static const routeName = '/welcome-screen';
+
   const WelcomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -27,7 +31,7 @@ class WelcomeScreen extends StatelessWidget {
           IconButton(
             onPressed: () => null,
             icon: Icon(
-              Icons.settings,
+              Icons.bug_report,
               color: appPrimaryDarkColor,
             ),
           )
@@ -63,33 +67,30 @@ class WelcomeScreen extends StatelessWidget {
           ),
           Column(
             children: [
-              FilledButton(
-                onPressed: () => Navigator.of(context).pushNamed(SignInScreen.routeName),
-                child: Text('Sign in'),
-                style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStatePropertyAll<Color>(appPrimaryColor),
-                    foregroundColor:
-                        MaterialStatePropertyAll<Color>(appPrimaryDarkColor),
-                    minimumSize: MaterialStatePropertyAll<Size>(Size(
-                        deviceSize.width * 0.8,
-                        Theme.of(context).buttonTheme.height * 1.25))),
+              Hero(
+                tag: 'btn-signin',
+                child: MPrimaryButton(
+                  onPressed: () =>
+                      Navigator.of(context).pushNamed(SignInScreen.routeName),
+                  title: 'Sign in',
+                  minimumSize: Size(
+                    deviceSize.width * 0.8,
+                    Theme.of(context).buttonTheme.height * 1.25,
+                  ),
+                ),
               ),
               SizedBox(
                 height: 18,
               ),
-              FilledButton.tonal(
-                onPressed: () => null,
-                child: Text('Create an account'),
-                style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStatePropertyAll<Color>(appSecondaryColor),
-                    foregroundColor:
-                        MaterialStatePropertyAll<Color>(appPrimaryDarkColor),
-                    minimumSize: MaterialStatePropertyAll<Size>(Size(
-                        deviceSize.width * 0.8,
-                        Theme.of(context).buttonTheme.height * 1.25))),
-              )
+              Hero(
+                tag: 'btn-signup',
+                child: MSecondaryButton(
+                  onPressed: () => null,
+                  title: 'Create an account',
+                  minimumSize: Size(deviceSize.width * 0.8,
+                      Theme.of(context).buttonTheme.height * 1.25),
+                ),
+              ),
             ],
           ),
         ],
