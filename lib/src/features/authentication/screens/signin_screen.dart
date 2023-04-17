@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:messaging_app/src/common_widgets/buttons/primary_button.dart';
 import 'package:messaging_app/src/common_widgets/textfields/text_form_field.dart';
 import 'package:messaging_app/src/constants/colors.dart';
+import 'package:messaging_app/src/features/apphome/screens/home_screen.dart';
+import 'package:messaging_app/src/features/authentication/screens/signup_screen.dart';
 
+import '../../../common_widgets/buttons/navigation_button.dart';
+import '../../../common_widgets/buttons/outlined_button.dart';
 import '../../../common_widgets/overlays/top_bar_overlay.dart';
-import 'test_paint.dart';
 
 class SignInScreen extends StatelessWidget {
   static const routeName = '/signin-screen';
@@ -29,7 +32,7 @@ class SignInScreen extends StatelessWidget {
                     height: deviceSize.height * 0.375,
                     // color: Colors.indigo,
                     child: CustomPaint(
-                      painter: TopBarPainter(Colors.black),
+                      painter: TopBarPainter(appPrimaryDarkColor),
                     ),
                   ),
                   Positioned(
@@ -48,26 +51,7 @@ class SignInScreen extends StatelessWidget {
                     left: deviceSize.width * 0.05,
                     // top: deviceSize.height * 0.275,
                     top: deviceSize.height * 0.125,
-                    child: ElevatedButton(
-                      onPressed: () => Navigator.pop(context),
-                      child: Icon(
-                        Icons.chevron_left,
-                        size: 28,
-                        color: appPrimaryDarkColor,
-                      ),
-                      style: ButtonStyle(
-                        shape: MaterialStatePropertyAll(CircleBorder()),
-                        backgroundColor:
-                            MaterialStatePropertyAll(appColorWhite),
-                        padding: MaterialStatePropertyAll(EdgeInsets.all(12)),
-                        overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                          (states) {
-                            if (states.contains(MaterialState.pressed))
-                              return appPrimaryColor.withOpacity(0.2);
-                          },
-                        ),
-                      ),
-                    ),
+                    child: MNavigationButton(),
                   ),
                 ],
               ),
@@ -101,8 +85,8 @@ class SignInScreen extends StatelessWidget {
                   Hero(
                     tag: 'btn-signin',
                     child: MPrimaryButton(
-                      onPressed: () => Navigator.pushNamed(
-                          context, TestPaintScreen.routeName),
+                      onPressed: () =>
+                          Navigator.pushNamed(context, AppHomeScreen.routeName),
                       title: 'Sign in',
                       minimumSize: Size(
                         deviceSize.width * 0.8,
@@ -119,17 +103,13 @@ class SignInScreen extends StatelessWidget {
                   ),
                   Hero(
                     tag: 'btn-signup',
-                    child: TextButton(
-                      onPressed: () => null,
-                      child: Text('Sign up now'),
-                      style: ButtonStyle(
-                          // backgroundColor:
-                          //     MaterialStatePropertyAll<Color>(appSecondaryColor),
-                          foregroundColor: MaterialStatePropertyAll<Color>(
-                              appPrimaryDarkColor),
-                          minimumSize: MaterialStatePropertyAll<Size>(Size(
-                              deviceSize.width * 0.8,
-                              Theme.of(context).buttonTheme.height * 1.25))),
+                    child: MOutlinedButton(
+                      onPressed: () => Navigator.pushReplacementNamed(
+                          context, SignUpScreen.routeName),
+                      title: 'Sign up now',
+                      // overlayColor: appSecondaryColor,
+                      minimumSize: Size(deviceSize.width * 0.8,
+                          Theme.of(context).buttonTheme.height * 1.25),
                     ),
                   )
                 ],

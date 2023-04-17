@@ -6,6 +6,7 @@ import 'package:messaging_app/src/common_widgets/buttons/secondary_button.dart';
 import '../../../../src/constants/assets.dart';
 import '../../../constants/colors.dart';
 import 'signin_screen.dart';
+import 'signup_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   static const routeName = '/welcome-screen';
@@ -85,7 +86,7 @@ class WelcomeScreen extends StatelessWidget {
               Hero(
                 tag: 'btn-signup',
                 child: MSecondaryButton(
-                  onPressed: () => null,
+                  onPressed: () => Navigator.pushNamed(context, SignUpScreen.routeName),
                   title: 'Create an account',
                   minimumSize: Size(deviceSize.width * 0.8,
                       Theme.of(context).buttonTheme.height * 1.25),
