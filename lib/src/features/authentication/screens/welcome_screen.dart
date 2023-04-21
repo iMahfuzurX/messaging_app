@@ -23,7 +23,7 @@ class WelcomeScreen extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           icon: Icon(
-            Icons.menu,
+            Icons.language,
             color: appPrimaryDarkColor,
           ),
           onPressed: () => null,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:messaging_app/src/constants/colors.dart';
 
 import 'models/chats_list_model.dart';
@@ -20,18 +21,19 @@ class ChatsList extends StatelessWidget {
             borderRadius: BorderRadius.circular(10)
           ),
           leading: CircleAvatar(
+            backgroundColor: appSecondaryColor,
             child: FittedBox(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'No\nImage\nFound',
+                  chatsListModel[index].contactName.substring(0,2),
                   textAlign: TextAlign.center,
                 ),
               ),
             ),
           ),
-          title: Text(chatsListModel[index].contactName),
-          subtitle: Text(chatsListModel[index].lastMsg),
+          title: Text(chatsListModel[index].contactName, style: GoogleFonts.merriweatherSans(),),
+          subtitle: Text(chatsListModel[index].lastMsg, style: GoogleFonts.jost(),),
         ),
       ),
       itemCount: chatsListModel.length,
