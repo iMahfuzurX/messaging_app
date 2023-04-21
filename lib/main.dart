@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:messaging_app/src/features/apphome/screens/home_screen.dart';
 import 'package:messaging_app/src/features/authentication/screens/signin_screen.dart';
 import 'package:messaging_app/src/features/authentication/screens/signup_screen.dart';
@@ -14,13 +15,14 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       // debugShowMaterialGrid: true,
       debugShowCheckedModeBanner: false,
       title: 'Messaging : Android',
       theme: MAppTheme.lightTheme,
       darkTheme: MAppTheme.darkTheme,
       themeMode: ThemeMode.system,
+      // initialBinding: ,
       // onGenerateRoute: ,
       // home: const WelcomeScreen(),
       routes: {

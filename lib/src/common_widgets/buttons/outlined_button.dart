@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../constants/colors.dart';
 import '../../constants/dimensions.dart';
@@ -21,7 +22,8 @@ class MOutlinedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return OutlinedButton(
       onPressed: onPressed,
-      child: Text(title),
+      child: Text(title,
+          style: GoogleFonts.secularOne(),),
       style: ButtonStyle(
           shape: MaterialStatePropertyAll(RoundedRectangleBorder(
               side: BorderSide(color: overlayColor, width: 2),

@@ -22,7 +22,7 @@ class MSecondaryButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         title,
-        style: GoogleFonts.poppins(),
+        style: GoogleFonts.secularOne(),
       ),
       style: ButtonStyle(
           shape: MaterialStatePropertyAll(RoundedRectangleBorder(
