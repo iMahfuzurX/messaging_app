@@ -8,7 +8,9 @@ import 'package:messaging_app/src/common_widgets/lists/models/chats_list_model.d
 import 'package:messaging_app/src/constants/colors.dart';
 import 'package:messaging_app/src/constants/dimensions.dart';
 import 'package:messaging_app/src/constants/enums.dart';
+import 'package:messaging_app/src/features/apphome/models/feed_model.dart';
 import 'package:messaging_app/src/features/apphome/models/notifications_model.dart';
+import 'package:messaging_app/src/features/apphome/screens/feed_widget.dart';
 import 'package:messaging_app/src/features/apphome/screens/notifications.dart';
 
 class AppHomeScreen extends StatelessWidget {
@@ -40,6 +42,100 @@ class AppHomeScreen extends StatelessWidget {
     NotificationsModel('nid6', 'timeStamp', false, 'userId', 'message6')
   ];
 
+  final feedList = [
+    FeedModel(
+        'id1',
+        'uid1',
+        'The quick brown fox jumps over a lazy dog. The quick brown fox jumps over a lazy dog.',
+        'time',
+        null,
+        'Jake'),
+    FeedModel(
+        'id1',
+        'uid1',
+        'The quick brown fox jumps over a lazy dog. The quick brown fox jumps over a lazy dog.',
+        'time',
+        null,
+        'Jake'),
+    FeedModel(
+        'id1',
+        'uid1',
+        'The quick brown fox jumps over a lazy dog. The quick brown fox jumps over a lazy dog.',
+        'time',
+        null,
+        'Jake'),
+    FeedModel(
+        'id1',
+        'uid1',
+        'The quick brown fox jumps over a lazy dog. The quick brown fox jumps over a lazy dog.',
+        'time',
+        null,
+        'Jake'),
+    FeedModel(
+        'id1',
+        'uid1',
+        'The quick brown fox jumps over a lazy dog. The quick brown fox jumps over a lazy dog.',
+        'time',
+        null,
+        'Jake'),
+    FeedModel(
+        'id1',
+        'uid1',
+        'The quick brown fox jumps over a lazy dog. The quick brown fox jumps over a lazy dog.',
+        'time',
+        null,
+        'Jake'),
+    FeedModel(
+        'id1',
+        'uid1',
+        'The quick brown fox jumps over a lazy dog. The quick brown fox jumps over a lazy dog.',
+        'time',
+        null,
+        'Jake'),
+    FeedModel(
+        'id1',
+        'uid1',
+        'The quick brown fox jumps over a lazy dog. The quick brown fox jumps over a lazy dog.',
+        'time',
+        null,
+        'Jake'),
+    FeedModel(
+        'id1',
+        'uid1',
+        'The quick brown fox jumps over a lazy dog. The quick brown fox jumps over a lazy dog.',
+        'time',
+        null,
+        'Jake'),
+    FeedModel(
+        'id1',
+        'uid1',
+        'The quick brown fox jumps over a lazy dog. The quick brown fox jumps over a lazy dog.',
+        'time',
+        null,
+        'Jake'),
+    FeedModel(
+        'id1',
+        'uid1',
+        'The quick brown fox jumps over a lazy dog. The quick brown fox jumps over a lazy dog.',
+        'time',
+        null,
+        'Jake'),
+    FeedModel(
+        'id1',
+        'uid1',
+        'The quick brown fox jumps over a lazy dog. The quick brown fox jumps over a lazy dog.',
+        'time',
+        null,
+        'Jake'),
+    FeedModel(
+        'id1',
+        'uid1',
+        'The quick brown fox jumps over a lazy dog. The quick brown fox jumps over a lazy dog.',
+        'time',
+        null,
+        'Jake'),
+  ];
+
   _appBar(width, height) => PreferredSize(
       child: Stack(
         children: [
@@ -59,7 +155,7 @@ class AppHomeScreen extends StatelessWidget {
                   );
                 else
                   return Text(
-                    './ Notifications',
+                    './ News Feed',
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   );
               }),
@@ -74,6 +170,8 @@ class AppHomeScreen extends StatelessWidget {
             right: 20,
             top: 100,
             child: AppBar(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
               backgroundColor: appPrimaryDarkColor,
               leading: IconButton(
                 icon: Icon(Icons.menu),
@@ -110,19 +208,23 @@ class AppHomeScreen extends StatelessWidget {
           if (controller.selectIndex.value == BottomNav.home)
             return ChatsList(chatsListModel: chatsList);
           else if (controller.selectIndex.value == BottomNav.notifications)
-            return MNotificationWidget(notificationList: notificationList);
+            return FeedWidget(feedList: feedList);
           else
             return Center(
               child: CircularProgressIndicator(),
             );
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => null,
-        backgroundColor: appPrimaryColor,
-        child: Icon(
-          Icons.chat,
-          color: appPrimaryDarkColor.withOpacity(0.85),
+      floatingActionButton: Obx(
+        () => FloatingActionButton(
+          onPressed: () => null,
+          backgroundColor: appPrimaryColor,
+          child: Icon(
+            (controller.selectIndex.value == BottomNav.notifications)
+                ? Icons.add
+                : Icons.chat,
+            color: appPrimaryDarkColor.withOpacity(0.85),
+          ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
@@ -163,7 +265,7 @@ class AppHomeScreen extends StatelessWidget {
                     deviceSize.width * 0.275, bottomBarPadding),
                 child: IconButton(
                   icon: Icon(
-                    Icons.notifications,
+                    Icons.feed,
                     color:
                         controller.selectIndex.value == BottomNav.notifications
                             ? bottomBarSelected

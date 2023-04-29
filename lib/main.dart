@@ -4,6 +4,7 @@ import 'package:messaging_app/src/features/apphome/screens/home_screen.dart';
 import 'package:messaging_app/src/features/authentication/screens/signin_screen.dart';
 import 'package:messaging_app/src/features/authentication/screens/signup_screen.dart';
 import 'package:messaging_app/src/features/authentication/screens/welcome_screen.dart';
+import 'package:messaging_app/src/features/chats/screens/chats_screen.dart';
 import 'package:messaging_app/src/utils/themes/app_theme.dart';
 
 void main() {
@@ -30,6 +31,7 @@ class MainApp extends StatelessWidget {
         SignInScreen.routeName: (ctx) => SignInScreen(),
         SignUpScreen.routeName: (ctx) => SignUpScreen(),
         AppHomeScreen.routeName: (ctx) => AppHomeScreen(),
+        // ChatScreen.routeName: (ctx) => ChatScreen(),
       },
     );
   }
